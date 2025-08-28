@@ -59,5 +59,32 @@ class MainActivity : AppCompatActivity() {
             calculo.text = "${calculo.text}9"
         }
 
+        amb.btnPonto.setOnClickListener {
+            calculo.text = "${calculo.text}."
+        }
+
+        amb.adicao.setOnClickListener {
+            calculo.text = "${calculo.text}+"
+        }
+
+        amb.subtracao.setOnClickListener {
+            calculo.text = "${calculo.text}-"
+        }
+
+        amb.multiplicacao.setOnClickListener {
+            calculo.text = "${calculo.text}*"
+        }
+
+        amb.divisao.setOnClickListener {
+            calculo.text = "${calculo.text}/"
+        }
+
+        amb.delete.setOnClickListener {
+            calculo.text = calculo.text.dropLast(1)
+        }
+
+        amb.ac.setOnClickListener {
+            calculo.text = ""
+        }
     }
 }
