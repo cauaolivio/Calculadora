@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import br.edu.ifsp.scl.prmd.SC3039587.calculadora.databinding.ActivityMainBinding
+import org.mariuszgromada.math.mxparser.Expression
 
 class MainActivity : AppCompatActivity() {
     private val amb: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater)}
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(amb.root)
 
         val calculo = amb.calculo
+        val resultado = amb.resultado
 
         amb.btn0.setOnClickListener {
             calculo.text = "${calculo.text}0"
@@ -85,6 +87,17 @@ class MainActivity : AppCompatActivity() {
 
         amb.ac.setOnClickListener {
             calculo.text = ""
+            resultado.text = ""
+        }
+
+        amb.igual.setOnClickListener {
+            val resultadoCalculo = Expression(calculo.text.toString()).calculate()
+
+            if (resultadoCalculo.isNaN()){
+                amb.resultado.text = "Expresão inválida"
+            } else {
+                amb.resultado.text = resultadoCalculo.toString()
+            }
         }
     }
 }
